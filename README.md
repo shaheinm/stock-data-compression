@@ -1,11 +1,11 @@
 # Polygon.io API Data Compression
 
 ## What Is It
-A tiny CLI that does naive, lossless compression for AAPL trade data from the Polygon.io Trades API. Compression ratio is only ~65%, but the LZW-inspired dictionary idea should be prevalent. 
+A tiny CLI that does naive, lossless compression for AAPL trade data from the [Polygon.io Trades API](https://polygon.io/docs/get_v2_ticks_stocks_trades__ticker___date__anchor). Compression ratio is only ~65%, but the LZW-inspired dictionary idea should be prevalent. 
 
 The compression ratio could be improved with more analysis of the results from the API (i.e. better understanding of prevalent patterns, or even better - a good separator that I can split the string on). I originally created the dictionary dynamically by splitting on commas, creating about 128 keys, but the compression ratio was worse. I also could have stolen one of the various implementations of `zstandard`, et al out in the wild (`zstd` gave me a ~19% compression ratio).
 
-There are no external dependencies, 
+There are no external dependencies. 
 
 ## How To Use It
 Build the binary:
