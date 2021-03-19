@@ -1,3 +1,3 @@
-module github.com/shaheinm/data-compression
+module github.com/shaheinm/stock-data-compression
 
 go 1.16
