@@ -5,6 +5,8 @@ A tiny CLI that does naive, lossless compression for AAPL trade data from the Po
 
 The compression ratio could be improved with more analysis of the results from the API (i.e. better understanding of prevalent patterns, or even better - a good separator that I can split the string on). I originally created the dictionary dynamically by splitting on commas, creating about 128 keys, but the compression ratio was worse. I also could have stolen one of the various implementations of `zstandard`, et al out in the wild (`zstd` gave me a ~19% compression ratio).
 
+There are no external dependencies, 
+
 ## How To Use It
 Build the binary:
 ```
@@ -45,3 +47,12 @@ aapl_full_day.json
 ```
 
 There are also some basic tests for the compress and decompress functions, if you want to run them (i.e. `go test`).
+
+## Releases
+
+Just for fun, I also cut a release (v0.0.1), so you can do the following:
+```
+$ go get -u github.com/shaheinm/stock-data-compression
+$ stock-data-compression compress -day="2021-03-17" -o="aapl_20210317_trades.json.shahein" -apiKey=supersecretapikey
+$ stock-data-compression decompress -f="aapl_20210317_trades.json.shahein" -o="aapl_20210317_trades.json"
+```
